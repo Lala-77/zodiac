@@ -558,8 +558,8 @@ export default function Home() {
     <div className="md:col-span-1">
       <h4 className="font-bold text-lg mb-4">Zodiac Enterprise</h4>
       <p className="mb-2">NZ-Bahrain | 123 Gulf Road, Manama, Bahrain</p>
-      <p className="mb-2">Email: info@zodiacenterprise.com</p>
-      <p className="mb-2">Phone: +973 1234 5678</p>
+      <p className="mb-2">Email: info@zodiacgcc.com</p>
+      <p className="mb-2">Phone: +973 3792 0204</p>
     </div>
     
     {/* Quick Links */}
@@ -578,8 +578,8 @@ export default function Home() {
     <div>
       <h4 className="font-bold text-lg mb-4">Our Services</h4>
       <ul className="space-y-2">
-        <li><span className="hover:text-blue-200 cursor-pointer">Vehicle Import</span></li>
-        <li><span className="hover:text-blue-200 cursor-pointer">Auto Parts</span></li>
+        <li><span className="hover:text-blue-200 cursor-pointer">Project Managment</span></li>
+        <li><span className="hover:text-blue-200 cursor-pointer">Sales and Services</span></li>
         <li><span className="hover:text-blue-200 cursor-pointer">Maintenance</span></li>
         <li><span className="hover:text-blue-200 cursor-pointer">Consultation</span></li>
       </ul>
