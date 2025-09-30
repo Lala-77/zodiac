@@ -277,7 +277,7 @@ export default function ContactPage() {
                       >
                         <option value="">Select Country</option>
                         {GCC_COUNTRIES.map(country => (
-                          <option key={country.code} value={country.code}>{country.flag} {country.name}</option>
+                          <option key={country.code} value={country.code}>{country.name}</option>
                         ))}
                       </select>
                     </div>
