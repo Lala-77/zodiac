@@ -66,7 +66,6 @@ export default function AboutPage() {
         title="About Zodiac Enterprise | Premium Construction Materials Supplier in GCC Countries"
         description="Zodiac Enterprise: New Zealand expertise from Bahrain supplying premium wall putty, drywall panels, cement blocks, solar materials to Saudi Arabia, UAE, Qatar, Oman, Kuwait. GCC construction solutions with climate-resistant building materials."
         canonical="https://www.zodiacgcc.com/about"
-        keywords="construction materials Bahrain, building supplies Saudi Arabia, wall putty UAE, drywall panels Qatar, solar blocks Oman, precast concrete Kuwait, GCC construction supplier, Middle East building materials, Bahrain construction company"
       />
 
       {/* Navigation Header */}
