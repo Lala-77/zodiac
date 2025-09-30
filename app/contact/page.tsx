@@ -35,21 +35,37 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormSent(true)
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      country: '',
-      product: '',
-      message: '',
-      phone: ''
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  
+  try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbztdCLdIRbk573_X0m5dq_RYvKDjKsNMp723H60n0Fq55rXXQDbKOy6-icDxkmijq4F/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     })
-    setTimeout(() => setFormSent(false), 5000)
+
+    if (response.ok) {
+      setFormSent(true)
+      setFormData({
+        name: '', 
+        email: '', 
+        company: '', 
+        country: '', 
+        product: '', 
+        message: '', 
+        phone: ''
+      })
+      setTimeout(() => setFormSent(false), 5000)
+    } else {
+      alert('Error sending message. Please try again.')
+    }
+  } catch (error) {
+    alert('Error sending message. Please try again.')
   }
+}
 
   return (
     <>
