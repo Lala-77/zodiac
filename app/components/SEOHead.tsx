@@ -12,7 +12,7 @@ interface SEOHeadProps {
 const SEOHead: React.FC<SEOHeadProps> = ({
   title = "Zodiac Enterprise - Premium Construction Materials Supplier in GCC | Bahrain",
   description = "New Zealand's Zodiac Enterprise in Bahrain supplies premium wall putty, drywall panels, cement blocks, precast concrete, and specialized glass panels for solar installations across the GCC.",
-  canonical = "https://www.zodiac.gcc.com",
+  canonical = "https://www.zodiacgcc.com",
   ogImage = "/og-image.webp"
 }) => {
   return (
