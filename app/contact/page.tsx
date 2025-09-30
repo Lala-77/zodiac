@@ -249,7 +249,7 @@ export default function ContactPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="your.email@company.com" 
+                        placeholder="jpsawan@gmail.com" 
                         className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                         required 
                       />
