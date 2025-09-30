@@ -279,7 +279,7 @@ export default function ProductsPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
               {GCC_COUNTRIES.map((country) => (
                 <div key={country.code} className="bg-blue-700 p-4 rounded-xl hover:bg-blue-600 transition-colors">
-                  <div className="text-2xl mb-2">{country.flag}</div>
+                  <div className="text-2xl mb-2"></div>
                   <span className="font-semibold">{country.name}</span>
                 </div>
               ))}
