@@ -66,7 +66,7 @@ export default function ContactPage() {
               <div className="flex-shrink-0 flex items-center">
                 <Link href="/" className="flex items-center">
                   <Image
-                    src="/logo.webp"
+                    src="/logo.png"
                     alt="Zodiac Enterprise - Construction Materials Supplier GCC"
                     width={160}
                     height={48}

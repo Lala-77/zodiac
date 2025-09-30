@@ -99,7 +99,7 @@ export default function GalleryPage() {
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 <Image
-                  src="/logo.webp"
+                  src="/logo.png"
                   alt="Zodiac Enterprise Logo - Construction Materials GCC"
                   width={160}
                   height={48}

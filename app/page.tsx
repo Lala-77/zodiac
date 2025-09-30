@@ -116,7 +116,7 @@ export default function Home() {
               <div className="flex items-center">
                 <div className="flex-shrink-0 flex items-center">
                   <Image
-                   src="/logo.webp"
+                   src="/logo.png"
                     alt="Zodiac Enterprise Logo - Premium Construction Materials Supplier in GCC Countries"
                     width={160}
                     height={48}

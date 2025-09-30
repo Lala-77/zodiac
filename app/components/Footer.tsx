@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <div className="flex items-center mb-6">
               <Image 
-                src="/logo.webp" 
+                src="/logo.png" 
                 alt="Zodiac Enterprise - Premium Construction Materials Supplier in GCC"
                 width={200}
                 height={60}

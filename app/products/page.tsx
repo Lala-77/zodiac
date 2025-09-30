@@ -20,7 +20,7 @@ export default function ProductsPage() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image 
-                src="/logo.webp" 
+                src="/logo.png" 
                 alt="Zodiac Enterprise - Construction Materials Bahrain"
                 width={180}
                 height={50}
