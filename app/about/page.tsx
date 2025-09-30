@@ -282,7 +282,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
               {GCC_COUNTRIES.map((country) => (
                 <div key={country.code} className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors group">
-                  <div className="text-2xl mb-2">{country.flag}</div>
+                  <div className="text-2xl mb-2"></div>
                   <h3 className="font-bold text-blue-800 text-sm">{country.name}</h3>
                   <p className="text-xs text-gray-600">Active Supply</p>
                 </div>
