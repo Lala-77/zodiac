@@ -36,36 +36,36 @@ export default function ContactPage() {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault()
-  
-  try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbztdCLdIRbk573_X0m5dq_RYvKDjKsNMp723H60n0Fq55rXXQDbKOy6-icDxkmijq4F/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-
-    if (response.ok) {
-      setFormSent(true)
-      setFormData({
-        name: '', 
-        email: '', 
-        company: '', 
-        country: '', 
-        product: '', 
-        message: '', 
-        phone: ''
+    e.preventDefault()
+    
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyjN9IwZSeOVrbdNbqRKJbx6AO_XPutVjPEJU0Fo0IE42ij3qaA9mohIQK7VIyCo72Y/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      setTimeout(() => setFormSent(false), 5000)
-    } else {
+
+      if (response.ok) {
+        setFormSent(true)
+        setFormData({
+          name: '', 
+          email: '', 
+          company: '', 
+          country: '', 
+          product: '', 
+          message: '', 
+          phone: ''
+        })
+        setTimeout(() => setFormSent(false), 5000)
+      } else {
+        alert('Error sending message. Please try again.')
+      }
+    } catch (error) {
       alert('Error sending message. Please try again.')
     }
-  } catch (error) {
-    alert('Error sending message. Please try again.')
   }
-}
 
   return (
     <>
