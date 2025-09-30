@@ -409,7 +409,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-2 gap-3">
                     {GCC_COUNTRIES.map(country => (
                       <div key={country.code} className="bg-white rounded-lg p-3 text-center hover:shadow-md transition-shadow">
-                        <div className="text-lg mb-1">{country.flag}</div>
+                        <div className="text-lg mb-1"></div>
                         <span className="text-sm font-medium text-gray-700">{country.name}</span>
                       </div>
                     ))}
