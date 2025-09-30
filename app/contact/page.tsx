@@ -56,7 +56,6 @@ export default function ContactPage() {
       <SEOHead 
         title="Contact Zodiac Enterprise Bahrain | Construction Materials Supplier"
         description="Contact Zodiac Enterprise Bahrain for premium construction materials. Get quotes for wall putty, drywall, cement blocks, precast concrete & solar panels. Serving Bahrain & GCC."
-        keywords="construction materials bahrain contact, building supplies bahrain, construction supplier bahrain, zodiac enterprise contact, bahrain construction materials quote"
       />
 
       {/* Navigation Header */}

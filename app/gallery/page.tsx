@@ -90,7 +90,6 @@ export default function GalleryPage() {
         title="Construction Materials Gallery | Zodiac Enterprise - GCC Supplier"
         description="Explore Zodiac Enterprise's construction materials gallery: wall putty, drywall panels, solar blocks, glass panels & precast concrete. Bahrain-based supplier serving Saudi Arabia, UAE, Qatar, Oman, Kuwait with reliable supply chain."
         canonical="https://www.zodiacgcc.com/gallery"
-        keywords="construction materials gallery Bahrain, building supplies Saudi Arabia, wall putty UAE, drywall panels Qatar, solar blocks Oman, precast concrete Kuwait, GCC construction supplier"
       />
 
       {/* Navigation Header */}
