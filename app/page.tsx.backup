@@ -1,5 +1,4 @@
 import LanguageSwitcher from "./components/LanguageSwitcher"
-"use client";
 
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
@@ -127,19 +126,20 @@ export default function Home() {
                   <span className="text-gray-900 font-bold text-lg md:text-xl">
                     Enterprise
                   </span>
+            </div>
+            <LanguageSwitcher />
                 </div>
-              </div>
-              
+            </div>
               {/* Desktop Navigation */}
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-8">
-                  <Link href="/" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
                     Home
                   </Link>
                   <Link href="/products" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
                     Products
                   </Link>
                   <Link href="/gallery" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                <Link href="/solar-panels" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                  Solar Panels
+                </Link>
                     Gallery
                   </Link>
                   <Link href="/about" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
@@ -175,6 +175,9 @@ export default function Home() {
                   Products
                 </Link>
                 <Link href="/gallery" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                <Link href="/solar-panels" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                  Solar Panels
+                </Link>
                   Gallery
                 </Link>
                 <Link href="/about" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
