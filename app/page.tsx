@@ -21,7 +21,6 @@ import {
 } from "react-icons/fa6";
 
 import MobileCallButton from './components/MobileCallButton';
-import SEOHead from './components/SEOHead';
 import { COMPANY_INFO, GCC_COUNTRIES, PRODUCTS } from './lib/constants';
 export default function Home() {
   const [formSent, setFormSent] = useState(false);
