@@ -29,23 +29,23 @@ export default function ProductsPage() {
             </Link>
 
             {/* Desktop Navigation */}
-<div className="hidden md:flex items-center space-x-8">
-  <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-    Home
-  </Link>
-  <Link href="/products" className="text-blue-600 font-medium border-b-2 border-blue-600">
-    Products
-  </Link>
-  <Link href="/gallery" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-    Gallery
-  </Link>
-  <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-    About
-  </Link>
-  <Link href="/contact" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-    Contact
-  </Link>
-</div>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Home
+              </Link>
+              <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                About Us
+              </Link>
+              <Link href="/products" className="text-blue-600 font-medium border-b-2 border-blue-600">
+                Products
+              </Link>
+              <Link href="/gallery" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                Gallery
+              </Link>
+              <Link href="/contact" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                Contact
+              </Link>
+            </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
