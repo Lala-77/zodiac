@@ -62,12 +62,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <SEOHead
-        title="About Zodiac Enterprise | Premium Construction Materials Supplier in GCC Countries"
-        description="Zodiac Enterprise: New Zealand expertise from Bahrain supplying premium wall putty, drywall panels, cement blocks, solar materials to Saudi Arabia, UAE, Qatar, Oman, Kuwait. GCC construction solutions with climate-resistant building materials."
-        canonical="https://www.zodiacgcc.com/about"
-      />
-
+      <SEOHead page="About" />
       {/* Navigation Header */}
       <nav className="bg-white fixed w-full top-0 z-50 shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
