@@ -1,17 +1,717 @@
-// ... (keep all your existing homepage code, just update the SEOHead part)
 
-// Change this line at the top of your component:
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image"; // ← ADD THIS LINE
+import LeadDiscovery from "./components/AI/LeadDiscovery";
+import Link from "next/link";
+import SEOHead from "./components/SEOHead";import SEOAutoOptimizer from "./components/AI/SEOAutoOptimizer";
+import Footer from "./components/Footer";
+import TaskScheduler from "./components/AI/TaskScheduler";
+import EmailAutomation from "./components/AI/EmailAutomation";
+import AnalyticsDashboard from "./components/AI/AnalyticsDashboard";import SmartResearchEngine from "./components/AI/SmartResearchEngine";
+import CompetitorIntelligence from "./components/AI/CompetitorIntelligence";
+
+import {
+  FaFacebookF,
+  FaXTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaXmark,
+  FaBars,
+} from "react-icons/fa6";
+
+import MobileCallButton from './components/MobileCallButton';
+import SEOHead from './components/SEOHead';
+import { COMPANY_INFO, GCC_COUNTRIES, PRODUCTS } from './lib/constants';
 export default function Home() {
-  // ... all your existing state and functions
+  const [formSent, setFormSent] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState("wall-putty");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Image arrays
+  const productsCarousel = [
+    "/products/glass2.webp",
+    "/products/glass3.webp",
+    "/products/glass5.webp",
+  ];
+
+  const glassImages = [
+    "/products/glass1.webp",
+    "/products/glass2.webp",
+    "/products/glass3.webp",
+    "/products/glass4.webp",
+    "/products/glass5.webp",
+  ];
+
+  const solarBlockImages = [
+    "/products/solar-blocks1.webp",
+    "/products/solar-blocks2.webp",
+    "/products/solar-blocks3.webp",
+  ];
+
+  const [glassIndex, setGlassIndex] = useState(0);
+  const [solarIndex, setSolarIndex] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState(1);
+
+  // Effects with proper dependencies
+  useEffect(() => {
+    const glassInterval = setInterval(() => {
+      setGlassIndex((prev) => (prev + 1) % glassImages.length);
+    }, 3000);
+
+    const solarInterval = setInterval(() => {
+      setSolarIndex((prev) => (prev + 1) % solarBlockImages.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(glassInterval);
+      clearInterval(solarInterval);
+    };
+  }, [glassImages.length, solarBlockImages.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % productsCarousel.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [productsCarousel.length]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormSent(true);
+    setTimeout(() => setFormSent(false), 3000);
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    const navHeight = 80;
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - navHeight,
+        behavior: "smooth",
+      });
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <>
-      <SEOHead page="Homepage" />
+      <SEOHead />
       
-      {/* Rest of your existing JSX */}
       <div className="bg-white font-sans">
-        {/* ... all your existing content */}
+        {/* Navigation */}
+        <nav
+          className={`bg-white fixed w-full top-0 z-50 transition-all duration-300 ${
+            isScrolled ? "shadow-lg" : ""
+          }`}
+          aria-label="Main navigation"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16 md:h-20">
+              <div className="flex items-center">
+                <div className="flex-shrink-0 flex items-center">
+                  <Image
+                   src="/logo.png"
+                    alt="Zodiac Enterprise Logo - Premium Construction Materials Supplier in GCC Countries"
+                    width={160}
+                    height={48}
+                    className="mr-2"
+  priority
+                  />
+                  <span className="text-gray-900 font-bold text-lg md:text-xl">
+                    Enterprise
+                  </span>
+                </div>
+              </div>
+              {/* ADD LANGUAGE SWITCHER HERE */}
+  <div className="hidden md:flex items-center space-x-4">
+  </div>
+              {/* Desktop Navigation */}
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-8">
+                  <Link href="/" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                    Home
+                  </Link>
+                  <Link href="/products" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                    Products
+                  </Link>
+                  <Link href="/gallery" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                    Gallery
+                  </Link>
+                  <Link href="/about" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                    About
+                  </Link>
+                  <Link href="/contact" className="text-gray-900 hover:text-blue-600 px-3 py-2 font-medium transition-colors">
+                    Contact
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Mobile Menu Button */}
+              <div className="md:hidden">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="text-gray-900 focus:outline-none"
+                  aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                >
+                  {mobileMenuOpen ? <FaXmark size={24} /> : <FaBars size={24} />}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-white shadow-lg">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                {/* ADD LANGUAGE SWITCHER TO MOBILE MENU */}
+      <div className="flex justify-center py-2">
       </div>
+                <Link href="/" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                  Home
+                </Link>
+                <Link href="/products" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                  Products
+                </Link>
+                <Link href="/gallery" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                  Gallery
+                </Link>
+                <Link href="/about" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                  About
+                </Link>
+                <Link href="/contact" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                  Contact
+                </Link>
+              </div>
+            </div>
+          )}
+        </nav>
+
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="bg-gradient-to-br from-blue-800 to-blue-400 min-h-screen flex items-center pt-16 md:pt-20"
+          role="region"
+          aria-label="Hero"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="text-white order-2 lg:order-1">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                Premium Construction Materials for the{" "}
+                <span className="text-yellow-400">GCC Region</span>
+              </h1>
+              <p className="text-lg md:text-xl mb-6 md:mb-8 text-blue-100 leading-relaxed">
+                Zodiac Enterprise is a New Zealand company operating in Bahrain,
+                delivering the highest standards in wall putty, drywall panels,
+                cement blocks, precast concrete, and specialized glass panels
+                for solar installations across the GCC.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => scrollToSection("products")}
+                  className="bg-yellow-500 hover:bg-yellow-400 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors shadow-lg"
+                >
+                  View Products
+                </button>
+                <a
+                  href={`tel:${COMPANY_INFO.phone}`}
+                  className="border-2 border-white text-white hover:bg-white hover:text-blue-800 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-colors text-center"
+                >
+                  Call {COMPANY_INFO.phone}
+                </a>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="w-full h-64 sm:h-80 md:h-[80vh] relative rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                <Image
+                  src="/hero-banner.webp"
+                  alt="Premium Construction Materials in GCC Countries - Wall Putty, Drywall Panels, Cement Blocks, Precast Concrete, Solar Glass"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* GCC Countries Banner */}
+        <section className="bg-blue-800 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <h3 className="text-xl font-bold mb-4">Serving All GCC Countries</h3>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              {GCC_COUNTRIES.map((country) => (
+                <div key={country.code} className="bg-blue-700 p-3 rounded-lg">
+                  <span className="font-semibold">{country.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* AI Keyword Research Test Section */}
+        <section className="py-16 bg-gradient-to-r from-purple-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <SmartResearchEngine />
+          </div>
+        </section>
+{/* Competitor Intelligence Engine */}
+        <section className="py-16 bg-gradient-to-r from-gray-50 to-purple-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <CompetitorIntelligence />
+          </div>
+        </section>
+{/* Lead Discovery Engine */}
+        <section className="py-16 bg-gradient-to-r from-red-50 to-orange-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <LeadDiscovery />
+          </div>
+        </section>
+{/* SEO Auto-Optimizer */}
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <SEOAutoOptimizer />
+          </div>
+        </section>
+        {/* 24/7 Task Scheduler */}
+        <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <TaskScheduler />
+          </div>
+        </section>
+        {/* Email Automation with Approval */}
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <EmailAutomation />
+          </div>
+        </section>
+        {/* Analytics Dashboard */}
+        <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <AnalyticsDashboard />
+          </div>
+        </section>
+        {/* Products Section */}
+        <section
+          id="products"
+          className="py-16 md:py-32 bg-gradient-to-r from-gray-50 to-gray-100"
+        >
+          {/* Product Highlights Section - UPDATED */}
+          <section className="py-16 md:py-32 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12 md:mb-20">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                  Product Highlights
+                </h2>
+                <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                  Discover our premium construction solutions featuring innovative glass technology and solar-ready materials for GCC projects.
+                </p>
+              </div>
+
+              {/* Fancy Scrolling Product Showcase */}
+              <div className="relative overflow-hidden mb-12">
+                <div className="flex space-x-6 animate-scroll hover:pause">
+                  {[...glassImages, ...glassImages].map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-80 h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Product highlight ${index + 1}`}
+                        width={320}
+                        height={256}
+                        className="object-cover w-full h-full"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Gradient overlays for smooth edges */}
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+              </div>
+
+              {/* Product Feature Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-white text-xl">🏗️</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">GCC Climate Optimized</h3>
+                  <p className="text-gray-600">Materials engineered for extreme heat, humidity, and sand conditions</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-white text-xl">⚡</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Solar Ready</h3>
+                  <p className="text-gray-600">Specialized blocks and glass panels designed for solar energy projects</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-white text-xl">🚚</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Fast GCC Delivery</h3>
+                  <p className="text-gray-600">Quick supply chain across Bahrain, Saudi Arabia, UAE, Qatar, Oman, Kuwait</p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Link href="/gallery">
+                  <button className="bg-blue-800 hover:bg-blue-900 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+                    Explore Full Product Gallery
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* Products Description Section */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 md:mb-20">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Our Premium Products
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                We supply the highest quality construction materials across the
+                GCC region including Bahrain, Saudi Arabia, UAE, Qatar, Oman,
+                and Kuwait. Our products meet the highest international standards
+                for durability and performance in extreme climate conditions.
+              </p>
+            </div>
+
+            {/* Product Tabs */}
+            <div className="mb-8 md:mb-12">
+              <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-200">
+                {PRODUCTS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`py-3 px-4 md:py-4 md:px-6 font-medium text-base md:text-lg whitespace-nowrap ${
+                      activeTab === tab.id
+                        ? "border-b-2 border-blue-600 text-blue-600"
+                        : "text-gray-600 hover:text-blue-500"
+                    }`}
+                    aria-pressed={activeTab === tab.id}
+                  >
+                    {tab.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div className="py-6 md:py-8">
+                {activeTab === "wall-putty" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        Premium Wall Putty for GCC Construction
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our high-quality wall putty is specially formulated to
+                        withstand the extreme climate conditions of the GCC
+                        region. It provides excellent adhesion, water resistance,
+                        and durability for both interior and exterior
+                        applications.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "Superior whiteness and smooth finish",
+                          "Excellent water resistance and weatherproofing",
+                          "High adhesive strength for all masonry surfaces",
+                          "Crack resistance in high temperatures",
+                          "Low consumption and easy application",
+                          "Environmentally friendly formulation"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-64 md:h-96 rounded-xl shadow-lg bg-white">
+  <Image
+    src="/products/wall-putty1.webp"
+    alt="Premium Wall Putty for Construction Projects in GCC Countries"
+    fill
+    className="object-contain p-4" // Add padding to prevent edge cutting
+    priority
+  />
+</div>
+                  </div>
+                )}
+
+                {activeTab === "drywall" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        High-Performance Drywall Panels
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our drywall panels are engineered for the specific needs
+                        of GCC construction projects. They offer exceptional fire
+                        resistance, moisture control, and acoustic insulation
+                        properties perfect for the region's climate and building
+                        requirements.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "Enhanced fire resistance (Type X drywall)",
+                          "Moisture and mold resistance for humid climates",
+                          "Superior sound insulation properties",
+                          "High durability and impact resistance",
+                          "Easy installation and finishing",
+                          "Environmentally friendly manufacturing"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="h-64 md:h-96 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+                      <Image
+                        src="/products/drywall-putty.webp"
+                        alt="High-Quality Drywall Panels for GCC Construction Projects"
+                        width={800}
+                        height={600}
+                        className="object-cover w-full h-full"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "solar-blocks" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        Solar Panel Cement Blocks
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our specialized cement blocks are engineered specifically
+                        for solar panel installations in the GCC region. These
+                        high-strength blocks provide secure mounting for solar
+                        arrays while withstanding extreme weather conditions.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "High compressive strength for secure mounting",
+                          "Weather and UV resistant formulation",
+                          "Pre-designed mounting points for easy installation",
+                          "Thermal stability in extreme temperatures",
+                          "Corrosion-resistant reinforcement",
+                          "Custom sizes available for different solar panel types"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="h-64 md:h-96 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+                      <Image
+                        src={solarBlockImages[solarIndex]}
+                        alt="Solar Panel Cement Blocks for GCC Solar Projects and Renewable Energy Installations"
+                        width={900}
+                        height={600}
+                        className="object-cover w-full h-full transition-all duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "glass-panels" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        Premium Glass Panels for Solar Applications
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our high-performance glass panels are specifically
+                        designed for solar energy applications in the GCC's harsh
+                        climate. They offer exceptional transparency, durability,
+                        and thermal resistance for maximum energy efficiency.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "High light transmittance for maximum energy generation",
+                          "Exceptional thermal stability and heat resistance",
+                          "Anti-reflective coating for improved efficiency",
+                          "Enhanced durability against sand and dust storms",
+                          "Multiple thickness options for different applications",
+                          "Low iron content for superior clarity"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="h-64 md:h-96 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+                      <Image
+                        src={glassImages[glassIndex]}
+                        alt="Premium Glass Panels for Solar Installations in GCC Countries"
+                        width={900}
+                        height={600}
+                        className="object-cover w-full h-full transition-all duration-700"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "precast" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        Precast Concrete Panels
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our precast concrete panels offer superior quality,
+                        durability, and faster construction times for projects
+                        across the GCC. Manufactured under controlled conditions,
+                        they ensure consistent quality and performance.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "High strength and durability for long-lasting structures",
+                          "Excellent thermal mass for energy efficiency",
+                          "Fire resistance and weather protection",
+                          "Reduced construction time and labor costs",
+                          "Consistent quality through controlled manufacturing",
+                          "Custom designs and finishes available"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="h-64 md:h-96 flex items-center justify-center overflow-hidden rounded-xl shadow-lg">
+                      <Image
+                        src="/products/precast-concrete.webp"
+                        alt="Precast Concrete Panels for Construction Projects in GCC Countries"
+                        width={900}
+                        height={600}
+                        className="object-cover w-full h-full"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="py-12 md:py-20 bg-blue-800 text-white text-center rounded-lg mx-4 my-12 md:my-16 shadow-lg">
+          <div className="max-w-4xl mx-auto px-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              High-Quality Construction Materials Across GCC
+            </h3>
+            <p className="text-base md:text-lg mb-6">
+              Durable, weather-resistant, and solar-optimized products for your projects in Bahrain, Saudi Arabia, UAE, Qatar, Oman, and Kuwait.
+            </p>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="bg-yellow-500 hover:bg-yellow-400 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold transition"
+            >
+              Request a Quote
+            </button>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-16 md:py-32 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Reach out to Zodiac Enterprise for inquiries, quotes, or partnership opportunities across GCC countries.
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white shadow-lg rounded-xl p-6 md:p-8 space-y-4 border border-gray-300"
+                aria-label="Contact form"
+              >
+                <input type="text" name="name" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                <input type="email" name="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                <input type="text" name="company" placeholder="Company Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                
+                <select name="country" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                  <option value="">Select Country</option>
+                  {GCC_COUNTRIES.map(country => (
+                    <option key={country.code} value={country.code}>{country.name}</option>
+                  ))}
+                  <option value="Other">Other</option>
+                </select>
+
+                <select name="product" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Interested In</option>
+                  {PRODUCTS.map(product => (
+                    <option key={product.id} value={product.id}>{product.name}</option>
+                  ))}
+                </select>
+
+                <textarea name="message" placeholder="Message" rows={5} className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                <div className="flex items-center justify-between gap-4">
+                  <button type="submit" className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold transition">
+                    {formSent ? "Sent ✓" : "Send Message"}
+                  </button>
+                  <div className="text-sm text-gray-600">
+                    <p>Or call us: <a href={`tel:${COMPANY_INFO.phone}`} className="text-blue-700 hover:underline">{COMPANY_INFO.phone}</a></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+ <Footer />
+        
+        {/* Back to top */}
+        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top" className="fixed right-4 bottom-6 z-40 bg-yellow-500 hover:bg-yellow-400 text-white p-3 rounded-full shadow-lg">
+          ↑
+        </button>
+
+        {/* Mobile Call Button */}
+        <MobileCallButton />
+      </div>
+
+      {/* Add custom CSS for the scrolling animation */}
+      <style jsx>{`
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        .hover\\:pause:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+     
     </>
   );
 }
