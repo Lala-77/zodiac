@@ -11,7 +11,7 @@ interface SEOOptimization {
   keywords: string[];
   improvementScore: number;
   lastOptimized: Date | null;
-  status: 'pending' | 'optimized' | 'failed';
+  status: 'pending' | 'optimized' | 'failed' | 'applying';
 }
 
 export default function SEOAutoOptimizer() {
@@ -98,8 +98,52 @@ export default function SEOAutoOptimizer() {
     setIsOptimizing(false);
   };
 
-  const applyOptimization = (page: string) => {
-    alert(`SEO optimization would be applied to: ${page}\n\nIn real implementation, this would update your website metadata automatically.`);
+  const applyOptimization = async (optimization: SEOOptimization) => {
+    setOptimizations(prev => 
+      prev.map(opt => 
+        opt.page === optimization.page 
+          ? { ...opt, status: 'applying' as const }
+          : opt
+      )
+    );
+
+    try {
+      const response = await fetch('/api/seo/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          page: optimization.page,
+          title: optimization.optimizedTitle,
+          description: optimization.optimizedDescription
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setOptimizations(prev => 
+          prev.map(opt => 
+            opt.page === optimization.page 
+              ? { ...opt, status: 'optimized' as const, lastOptimized: new Date() }
+              : opt
+          )
+        );
+        alert(`✅ ${result.message}`);
+      } else {
+        throw new Error(result.error || 'Update failed');
+      }
+    } catch (error: any) {
+      setOptimizations(prev => 
+        prev.map(opt => 
+          opt.page === optimization.page 
+            ? { ...opt, status: 'failed' as const }
+            : opt
+        )
+      );
+      alert(`❌ Failed to update ${optimization.page}: ${error.message}`);
+    }
   };
 
   const getStatusColor = (status: string) => {
@@ -107,14 +151,25 @@ export default function SEOAutoOptimizer() {
       case 'optimized': return 'bg-green-100 text-green-800';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'failed': return 'bg-red-100 text-red-800';
+      case 'applying': return 'bg-blue-100 text-blue-800';
       default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'optimized': return '✅ Optimized';
+      case 'pending': return '⏳ Pending';
+      case 'failed': return '❌ Failed';
+      case 'applying': return '🔄 Applying...';
+      default: return '⏳ Pending';
     }
   };
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg border">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">🚀 SEO Auto-Optimizer</h2>
-      <p className="text-gray-600 mb-4">AI-powered SEO optimization that updates your website automatically</p>
+      <p className="text-gray-600 mb-4">AI-powered SEO optimization that AUTO-UPDATES your website</p>
       
       <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
         <div className="text-center">
@@ -149,7 +204,7 @@ export default function SEOAutoOptimizer() {
                   <div>
                     <h4 className="font-bold text-lg text-gray-800">{optimization.page}</h4>
                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(optimization.status)}`}>
-                      {optimization.status.toUpperCase()}
+                      {getStatusText(optimization.status)}
                     </span>
                   </div>
                   {optimization.improvementScore > 0 && (
@@ -202,10 +257,11 @@ export default function SEOAutoOptimizer() {
                     </div>
                   )}
                   <button
-                    onClick={() => applyOptimization(optimization.page)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-semibold transition-colors"
+                    onClick={() => applyOptimization(optimization)}
+                    disabled={optimization.status === 'applying'}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm font-semibold transition-colors"
                   >
-                    Apply Changes
+                    {optimization.status === 'applying' ? '🔄 Applying...' : '🚀 Apply Changes'}
                   </button>
                 </div>
               </div>
@@ -213,6 +269,16 @@ export default function SEOAutoOptimizer() {
           </div>
         </div>
       )}
+
+      <div className="mt-6 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+        <h4 className="font-semibold text-green-800 mb-2">🚀 Auto-Update Feature Active!</h4>
+        <ul className="text-sm text-green-700 list-disc list-inside space-y-1">
+          <li>Click "Apply Changes" to automatically update your website files</li>
+          <li>SEO metadata will be updated in real-time</li>
+          <li>No manual copy-pasting required</li>
+          <li>Changes take effect immediately after deployment</li>
+        </ul>
+      </div>
     </div>
   );
 }

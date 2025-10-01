@@ -9,8 +9,8 @@ export default function ProductsPage() {
   return (
     <>
       <SEOHead 
-        title="Premium Construction Materials Supplier in Bahrain | Zodiac Enterprise"
-        description="Zodiac Enterprise Bahrain: Leading supplier of wall putty, drywall systems, cement blocks, precast concrete, and solar glass panels. Quality construction materials for Bahrain & GCC projects."
+        title="Construction Materials Bahrain 2024 | Wall Putty, Drywall, Solar Blocks Supplier"
+        description="Best construction materials in Bahrain: premium wall putty, drywall systems, cement blocks, precast concrete, solar-ready blocks. Competitive prices for UAE, Saudi Arabia, Qatar projects."
       />
       
       {/* Navigation Menu - Same as Home Page */}
