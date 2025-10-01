@@ -69,11 +69,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEOHead 
-        title="Contact Zodiac Enterprise Bahrain | Construction Materials Supplier"
-        description="Contact Zodiac Enterprise Bahrain for premium construction materials. Get quotes for wall putty, drywall, cement blocks, precast concrete & solar panels. Serving Bahrain & GCC."
-      />
-
+      <SEOHead page="Contact" />
       {/* Navigation Header */}
       <nav className="bg-white fixed w-full top-0 z-50 shadow-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
