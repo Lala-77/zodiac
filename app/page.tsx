@@ -46,8 +46,9 @@ export default function Home() {
 
   const [glassIndex, setGlassIndex] = useState(0);
   const [solarIndex, setSolarIndex] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState(1);
 
-  // Effects
+  // Effects with proper dependencies
   useEffect(() => {
     const glassInterval = setInterval(() => {
       setGlassIndex((prev) => (prev + 1) % glassImages.length);
@@ -233,9 +234,175 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Add the rest of your original homepage sections here */}
-        {/* GCC Countries Banner, Products Section, Contact Section, etc. */}
-        
+        {/* GCC Countries Banner */}
+        <section className="bg-blue-800 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <h3 className="text-xl font-bold mb-4">Serving All GCC Countries</h3>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              {GCC_COUNTRIES.map((country) => (
+                <div key={country.code} className="bg-blue-700 p-3 rounded-lg">
+                  <span className="font-semibold">{country.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Products Section */}
+        <section
+          id="products"
+          className="py-16 md:py-32 bg-gradient-to-r from-gray-50 to-gray-100"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 md:mb-20">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Our Premium Products
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                We supply the highest quality construction materials across the
+                GCC region including Bahrain, Saudi Arabia, UAE, Qatar, Oman,
+                and Kuwait. Our products meet the highest international standards
+                for durability and performance in extreme climate conditions.
+              </p>
+            </div>
+
+            {/* Product Tabs */}
+            <div className="mb-8 md:mb-12">
+              <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-200">
+                {PRODUCTS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`py-3 px-4 md:py-4 md:px-6 font-medium text-base md:text-lg whitespace-nowrap ${
+                      activeTab === tab.id
+                        ? "border-b-2 border-blue-600 text-blue-600"
+                        : "text-gray-600 hover:text-blue-500"
+                    }`}
+                    aria-pressed={activeTab === tab.id}
+                  >
+                    {tab.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div className="py-6 md:py-8">
+                {activeTab === "wall-putty" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                        Premium Wall Putty for GCC Construction
+                      </h3>
+                      <p className="text-base md:text-lg text-gray-600 mb-4">
+                        Our high-quality wall putty is specially formulated to
+                        withstand the extreme climate conditions of the GCC
+                        region. It provides excellent adhesion, water resistance,
+                        and durability for both interior and exterior
+                        applications.
+                      </p>
+                      <ul className="text-gray-600 space-y-2 mb-4 md:mb-6">
+                        {[
+                          "Superior whiteness and smooth finish",
+                          "Excellent water resistance and weatherproofing",
+                          "High adhesive strength for all masonry surfaces",
+                          "Crack resistance in high temperatures",
+                          "Low consumption and easy application",
+                          "Environmentally friendly formulation"
+                        ].map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2">✓</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-64 md:h-96 rounded-xl shadow-lg bg-white">
+                      <Image
+                        src="/products/wall-putty1.webp"
+                        alt="Premium Wall Putty for Construction Projects in GCC Countries"
+                        fill
+                        className="object-contain p-4"
+                        priority
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Add other product tabs content here */}
+                {/* drywall, solar-blocks, glass-panels, precast */}
+                
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="py-12 md:py-20 bg-blue-800 text-white text-center rounded-lg mx-4 my-12 md:my-16 shadow-lg">
+          <div className="max-w-4xl mx-auto px-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              High-Quality Construction Materials Across GCC
+            </h3>
+            <p className="text-base md:text-lg mb-6">
+              Durable, weather-resistant, and solar-optimized products for your projects in Bahrain, Saudi Arabia, UAE, Qatar, Oman, and Kuwait.
+            </p>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="bg-yellow-500 hover:bg-yellow-400 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold transition"
+            >
+              Request a Quote
+            </button>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-16 md:py-32 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Reach out to Zodiac Enterprise for inquiries, quotes, or partnership opportunities across GCC countries.
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white shadow-lg rounded-xl p-6 md:p-8 space-y-4 border border-gray-300"
+                aria-label="Contact form"
+              >
+                <input type="text" name="name" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                <input type="email" name="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                <input type="text" name="company" placeholder="Company Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                
+                <select name="country" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                  <option value="">Select Country</option>
+                  {GCC_COUNTRIES.map(country => (
+                    <option key={country.code} value={country.code}>{country.name}</option>
+                  ))}
+                  <option value="Other">Other</option>
+                </select>
+
+                <select name="product" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Interested In</option>
+                  {PRODUCTS.map(product => (
+                    <option key={product.id} value={product.id}>{product.name}</option>
+                  ))}
+                </select>
+
+                <textarea name="message" placeholder="Message" rows={5} className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                <div className="flex items-center justify-between gap-4">
+                  <button type="submit" className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold transition">
+                    {formSent ? "Sent ✓" : "Send Message"}
+                  </button>
+                  <div className="text-sm text-gray-600">
+                    <p>Or call us: <a href={`tel:${COMPANY_INFO.phone}`} className="text-blue-700 hover:underline">{COMPANY_INFO.phone}</a></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <Footer />
         
         {/* Back to top */}
