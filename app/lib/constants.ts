@@ -1,7 +1,7 @@
 export const COMPANY_INFO = {
   name: "Zodiac Enterprise",
   phone: "+97337920204",
-  email: "info@zodiacgcc.com",
+  email: "jerry@zodiacgcc.com",
   address: "123 Gulf Road, Manama, Bahrain",
   workingHours: "Sun - Thu, 8:00 AM - 5:00 PM",
   socialMedia: {
