@@ -86,12 +86,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <SEOHead
-        title="Construction Materials Gallery | Zodiac Enterprise - GCC Supplier"
-        description="Explore Zodiac Enterprise's construction materials gallery: wall putty, drywall panels, solar blocks, glass panels & precast concrete. Bahrain-based supplier serving Saudi Arabia, UAE, Qatar, Oman, Kuwait with reliable supply chain."
-        canonical="https://www.zodiacgcc.com/gallery"
-      />
-
+      <SEOHead page="Gallery" />
       {/* Navigation Header */}
       <nav className="bg-white fixed w-full top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -8,11 +8,7 @@ import Footer from '../components/Footer'
 export default function ProductsPage() {
   return (
     <>
-      <SEOHead 
-        title="Construction Materials Bahrain 2024 | Wall Putty, Drywall, Solar Blocks Supplier"
-        description="Best construction materials in Bahrain: premium wall putty, drywall systems, cement blocks, precast concrete, solar-ready blocks. Competitive prices for UAE, Saudi Arabia, Qatar projects."
-      />
-      
+      <SEOHead page="Products" />      
       {/* Navigation Menu - Same as Home Page */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

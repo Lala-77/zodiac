@@ -8,11 +8,7 @@ import Footer from '../components/Footer'
 export default function ProductsPage() {
   return (
     <>
-      <SEOHead 
-        title="Premium Construction Materials Supplier in Bahrain | Zodiac Enterprise"
-        description="Zodiac Enterprise Bahrain: Leading supplier of wall putty, drywall systems, cement blocks, precast concrete, and solar glass panels. Quality construction materials for Bahrain & GCC projects."
-      />
-      
+      <SEOHead page="Products" />      
       {/* Navigation Menu - Same as Home Page */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
