@@ -1,0 +1,50 @@
+
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image"; // ← ADD THIS LINE
+import LeadDiscovery from "./components/AI/LeadDiscovery";
+import Link from "next/link";
+import SEOAutoOptimizer from "./components/AI/SEOAutoOptimizer";
+import Footer from "./components/Footer";
+import TaskScheduler from "./components/AI/TaskScheduler";
+import EmailAutomation from "./components/AI/EmailAutomation";
+import AnalyticsDashboard from "./components/AI/AnalyticsDashboard";import SmartResearchEngine from "./components/AI/SmartResearchEngine";
+import CompetitorIntelligence from "./components/AI/CompetitorIntelligence";
+
+import {
+  FaFacebookF,
+  FaXTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaXmark,
+  FaBars,
+} from "react-icons/fa6";
+
+import MobileCallButton from './components/MobileCallButton';
+import SEOHead from './components/SEOHead';
+import { COMPANY_INFO, GCC_COUNTRIES, PRODUCTS } from './lib/constants';
+export default function Home() {
+  const [formSent, setFormSent] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState("wall-putty");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Image arrays
+  const productsCarousel = [
+    "/products/glass2.webp",
+    "/products/glass3.webp",
+    "/products/glass5.webp",
+  ];
+
+  const glassImages = [
+    "/products/glass1.webp",
+    "/products/glass2.webp",
+    "/products/glass3.webp",
+    "/products/glass4.webp",
+    "/products/glass5.webp",
+  ];
+
+  const solarBlockImages = [
+    "/products/solar-blocks1.webp",
+    "/products/solar-blocks2.webp",

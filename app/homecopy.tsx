@@ -1,16 +1,14 @@
 
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-
+import Image from "next/image"; // ← ADD THIS LINE
 import LeadDiscovery from "./components/AI/LeadDiscovery";
-import SEOAutoOptimizer from "./components/AI/SEOAutoOptimizer";
+import Link from "next/link";
+import SEOHead from "./components/SEOHead";import SEOAutoOptimizer from "./components/AI/SEOAutoOptimizer";
 import Footer from "./components/Footer";
 import TaskScheduler from "./components/AI/TaskScheduler";
 import EmailAutomation from "./components/AI/EmailAutomation";
-import AnalyticsDashboard from "./components/AI/AnalyticsDashboard";
-import SmartResearchEngine from "./components/AI/SmartResearchEngine";
+import AnalyticsDashboard from "./components/AI/AnalyticsDashboard";import SmartResearchEngine from "./components/AI/SmartResearchEngine";
 import CompetitorIntelligence from "./components/AI/CompetitorIntelligence";
 
 import {
@@ -22,9 +20,8 @@ import {
   FaBars,
 } from "react-icons/fa6";
 
-import MobileCallButton from "./components/MobileCallButton";
-import SEOHead from "./components/SEOHead";
-import { COMPANY_INFO, GCC_COUNTRIES, PRODUCTS } from "./lib/constants";
+import MobileCallButton from './components/MobileCallButton';
+import { COMPANY_INFO, GCC_COUNTRIES, PRODUCTS } from './lib/constants';
 export default function Home() {
   const [formSent, setFormSent] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -261,7 +258,48 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+        {/* AI Keyword Research Test Section */}
+        <section className="py-16 bg-gradient-to-r from-purple-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <SmartResearchEngine />
+          </div>
+        </section>
+{/* Competitor Intelligence Engine */}
+        <section className="py-16 bg-gradient-to-r from-gray-50 to-purple-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <CompetitorIntelligence />
+          </div>
+        </section>
+{/* Lead Discovery Engine */}
+        <section className="py-16 bg-gradient-to-r from-red-50 to-orange-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <LeadDiscovery />
+          </div>
+        </section>
+{/* SEO Auto-Optimizer */}
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <SEOAutoOptimizer />
+          </div>
+        </section>
+        {/* 24/7 Task Scheduler */}
+        <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <TaskScheduler />
+          </div>
+        </section>
+        {/* Email Automation with Approval */}
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <EmailAutomation />
+          </div>
+        </section>
+        {/* Analytics Dashboard */}
+        <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <AnalyticsDashboard />
+          </div>
+        </section>
         {/* Products Section */}
         <section
           id="products"
