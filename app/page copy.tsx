@@ -129,10 +129,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              {/* ADD LANGUAGE SWITCHER HERE */}
-  <div className="hidden md:flex items-center space-x-4">
-    <LanguageSwitcher />
-  </div>
+              
               {/* Desktop Navigation */}
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-8">
@@ -171,10 +168,6 @@ export default function Home() {
           {mobileMenuOpen && (
             <div className="md:hidden bg-white shadow-lg">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {/* ADD LANGUAGE SWITCHER TO MOBILE MENU */}
-      <div className="flex justify-center py-2">
-        <LanguageSwitcher />
-      </div>
                 <Link href="/" className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
                   Home
                 </Link>
