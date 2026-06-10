@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodiac GCC | Materials Division & Project Syndicate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafcf9;
+      color: #1a2a2f;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* header - simple back link to homepage */
+    .top-bar {
+      background: #1f3b2c;
+      color: white;
+      padding: 12px 0;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .top-bar a {
+      color: #ffdd99;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+    .main-header {
+      background: white;
+      padding: 20px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1f3b2c;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #5a6e5a;
+    }
+    /* two division cards */
+    .divisions-showcase {
+      padding: 60px 0 40px;
+    }
+    .division-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .division-card {
+      flex: 1;
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+      transition: 0.2s;
+      border: 1px solid #e9f0e5;
+    }
+    .card-head {
+      padding: 32px 28px 20px;
+    }
+    .badge-materials {
+      background: #1f3b2c;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .badge-syndicate {
+      background: #2c5a6e;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .division-card h2 {
+      font-size: 1.9rem;
+      margin: 16px 0 10px;
+    }
+    .division-desc {
+      color: #3d5543;
+      margin-bottom: 20px;
+    }
+    .product-list {
+      padding: 0 28px 24px;
+      list-style: none;
+    }
+    .product-list li {
+      margin-bottom: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .product-list i {
+      width: 24px;
+      color: #2f6b47;
+    }
+    .btn-materials {
+      background: #1f3b2c;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 28px 28px;
+      font-weight: 600;
+    }
+    .btn-syndicate {
+      background: #2c5a6e;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 28px 28px;
+      font-weight: 600;
+    }
+    /* syndicate section - full width */
+    .syndicate-full {
+      background: #f2f7f2;
+      padding: 70px 0;
+      margin-top: 40px;
+    }
+    .syndicate-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+    .stats-box {
+      background: white;
+      padding: 28px;
+      border-radius: 28px;
+      flex: 1;
+    }
+    .footer-note {
+      background: #0f241c;
+      color: #cfe3d4;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 800px) {
+      .division-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Simple top bar linking back to your existing homepage (no changes to homepage) -->
+<div class="top-bar">
+  <i class="fas fa-home"></i> <a href="https://www.zodiacgcc.com/">← Back to Zodiac GCC Main Site (Construction Materials Home)</a> &nbsp;|&nbsp; <strong>New: Project Syndicate Division</strong>
+</div>
+
+<header class="main-header">
+  <div class="container logo">
+    <h1>ZODIAC GCC</h1>
+    <p>Two specialized divisions | Materials · Project Syndicate</p>
+  </div>
+</header>
+
+<section class="divisions-showcase">
+  <div class="container">
+    <h2 style="font-size: 2rem; text-align: center;">Our Divisions</h2>
+    <p style="text-align: center; color: #4a6741;">Separate expertise, one trusted group</p>
+    
+    <div class="division-grid">
+      <!-- DIVISION 1: MATERIALS (expanded with solar panels & inverters) -->
+      <div class="division-card">
+        <div class="card-head">
+          <span class="badge-materials"><i class="fas fa-hard-hat"></i> Division I</span>
+          <h2>Materials Division</h2>
+          <p class="division-desc">Premium construction materials + Solar energy solutions for GCC climate</p>
+        </div>
+        <ul class="product-list">
+          <li><i class="fas fa-check"></i> Wall Putty (climate-optimized)</li>
+          <li><i class="fas fa-check"></i> Drywall Panels / Gypsum boards</li>
+          <li><i class="fas fa-check"></i> Cement Blocks & Precast Concrete</li>
+          <li><i class="fas fa-check"></i> Specialized Glass Panels (solar-ready)</li>
+          <li><i class="fas fa-solar-panel"></i> <strong>Solar Panels (Monocrystalline/Polycrystalline)</strong> – NEW</li>
+          <li><i class="fas fa-bolt"></i> <strong>Solar Inverters (String / Hybrid / Off-grid)</strong> – NEW</li>
+          <li><i class="fas fa-charging-station"></i> Mounting structures & solar accessories</li>
+        </ul>
+        <a href="#" class="btn-materials"><i class="fas fa-truck"></i> Request material quote</a>
+      </div>
+
+      <!-- DIVISION 2: PROJECT SYNDICATE (NO material wording) -->
+      <div class="division-card">
+        <div class="card-head">
+          <span class="badge-syndicate"><i class="fas fa-handshake"></i> Division II</span>
+          <h2>Project Syndicate</h2>
+          <p class="division-desc">Syndicate Manager for international mega projects</p>
+        </div>
+        <ul class="product-list">
+          <li><i class="fas fa-chart-line"></i> Deal structuring & due diligence</li>
+          <li><i class="fas fa-users"></i> Investor sourcing & capital raising</li>
+          <li><i class="fas fa-building"></i> Infrastructure, energy, real estate syndication</li>
+          <li><i class="fas fa-file-signature"></i> Legal frameworks (DIFC/ADGM compliant)</li>
+          <li><i class="fas fa-chart-simple"></i> Post-close reporting & distributions</li>
+          <li><i class="fas fa-lock"></i> Gated investor portal (accredited only)</li>
+        </ul>
+        <a href="#" class="btn-syndicate"><i class="fas fa-chart-line"></i> View active syndications →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Syndicate manager deep section (no materials) -->
+<section class="syndicate-full">
+  <div class="container syndicate-flex">
+    <div class="stats-box">
+      <i class="fas fa-chart-line" style="font-size: 2.5rem; color:#2c5a6e;"></i>
+      <h3 style="margin: 16px 0 8px;">Syndicate Manager since 2018</h3>
+      <p style="margin-bottom: 16px;">Zodiac GCC acts as lead arranger and syndicate manager for mega projects across the GCC and international markets.</p>
+      <ul style="list-style: none;">
+        <li>✓ <strong>$2.8B+</strong> total syndicated capital</li>
+        <li>✓ <strong>8</strong> completed syndications</li>
+        <li>✓ <strong>160+</strong> qualified investors (institutional & HNI)</li>
+        <li>✓ Target IRR range: <strong>13% – 22%</strong></li>
+      </ul>
+    </div>
+    <div class="stats-box">
+      <i class="fas fa-fingerprint" style="font-size: 2.5rem; color:#2c5a6e;"></i>
+      <h3 style="margin: 16px 0 8px;">Investor Portal (Gated)</h3>
+      <p>Accredited investors get access to:</p>
+      <ul style="list-style: none; margin-top: 12px;">
+        <li>→ Live deal flow & term sheets</li>
+        <li>→ Quarterly project dashboards</li>
+        <li>→ Syndicate manager Q&A</li>
+        <li>→ Capital call & distribution reports</li>
+      </ul>
+      <a href="#" style="display: inline-block; margin-top: 20px; background: #2c5a6e; color: white; padding: 8px 20px; border-radius: 40px; text-decoration: none;">Apply for access →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer with clear separation and link back -->
+<div class="footer-note">
+  <div class="container">
+    <p><strong>Zodiac GCC</strong> — Two divisions: <strong>Materials Division</strong> (construction & solar products) | <strong>Project Syndicate Division</strong> (syndicate manager for mega projects)</p>
+    <p style="margin-top: 12px;"><a href="https://www.zodiacgcc.com/" style="color: #ffdd99;">← Return to main materials homepage</a> | <i class="fas fa-envelope"></i> info@zodiacgcc.com</p>
+    <p style="margin-top: 16px; font-size: 0.7rem;">© Zodiac GCC – All rights reserved. The Project Syndicate division operates separately. Accredited investor portal subject to KYC/AML verification.</p>
+  </div>
+</div>
+
+</body>
+</html>
